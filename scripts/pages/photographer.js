@@ -18,8 +18,12 @@ function getPhotographerProfile(photographers, id){
     return profile
 }
 
-function getPhotographerMedias(id){
-
+function getPhotographerMedias(media, id){
+    const medias = media.filter((photographerId)=>{
+        // console.log(photographerId)
+        return id === media.photographerId
+    })
+    console.log(medias)
 }
 
 function displayProfile(profile){
@@ -27,15 +31,17 @@ function displayProfile(profile){
 }
 
 function displayMedias(medias){
-
+console.log(medias)
 }
 
 async function main(){
     const id = getPhotographerID()
     console.log(id)
-    const {photographers, medias} = await getAllData()
+    // const medias = getPhotographerMedias()
+    // console.log(medias)
+    const {photographers, media} = await getAllData()
     const photographeprofile = getPhotographerProfile(photographers, id)
-    const photographerMedias = getPhotographerMedias(medias, id)
+    const photographerMedias = getPhotographerMedias(media, id)
 
     displayProfile(photographeprofile)
     displayMedias(photographerMedias)
