@@ -29,8 +29,8 @@ async function displayProfile(profile){
 
     const template = `
         <div>
-            <h2 class="photographer-name">${profile.name}</h2>
-            <p class="photographer-adress">${profile.city}, ${profile.country}</p>
+            <h1 class="photographer-name">${profile.name}</h1>
+            <h2 class="photographer-adress">${profile.city}, ${profile.country}</h2>
             <p class="photographer-tagline">${profile.tagline}</p>
         </div>
         <button class="contact_button" onclick="displayModal()" title="Contact Me">Contactez-moi</button>

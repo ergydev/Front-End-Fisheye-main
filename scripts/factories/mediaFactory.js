@@ -9,7 +9,7 @@ function mediaFactory(data){
         if(image){
             return`
             <div class="photographer-gallery__card" aria-label="${title} thumbnail">
-                <img class="photographer-gallery__media" src="${picture}" />
+                <img class="photographer-gallery__media" src="${picture}" alt="${title}, closeup" />
                 <div class="photographer-gallery__info">
                     <h3 class="photographer-gallery__info-title">${title}</h3>
                     <span class="photographer-gallery__info-likes">
@@ -23,7 +23,7 @@ function mediaFactory(data){
         return`
         <div class="photographer-gallery__card" aria-label="${title} thumbnail">
             <video class="photographer-gallery__media">
-                <source src="${videos}" type="video/mp4">
+                <source src="${videos}" type="video/mp4" alt="${title}, closeup">
             </video>
             <div class="photographer-gallery__info">
                 <h3 class="photographer-gallery__info-title">${title}</h3>
