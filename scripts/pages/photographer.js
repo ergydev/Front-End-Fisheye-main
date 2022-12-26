@@ -16,6 +16,8 @@ function getPhotographerID(){
 function getPhotographerProfile(photographers, identifier){
     const profile = photographers.find((photographer) => photographer.id == identifier)
     document.title = "Fisheye - " + profile.name;
+    const modalName = document.querySelector('.modal--name')
+    modalName.textContent = profile.name
     return profile
 }
 
@@ -39,8 +41,6 @@ async function displayProfile(profile){
         </div>
     `
     photographerHeader.innerHTML = template
-
-    console.log(profile)
 }
 
 function displayMedias(medias){
@@ -49,8 +49,6 @@ function displayMedias(medias){
     let template = ""
     medias.forEach(media => template += mediaFactory(media).getMediaCardDOM())
     gallerySection.innerHTML = template
-    console.log(medias)
-
 }
 
 async function main(){
@@ -61,8 +59,5 @@ async function main(){
 
     displayProfile(photographeprofile)
     displayMedias(photographerMedias)
-
-
-}
-
+} 
 main();
