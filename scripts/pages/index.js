@@ -1,10 +1,10 @@
-    async function getPhotographers() {
+    async function getPhotographers(){
         const res = await fetch('/data/photographers.json')
         const data = await res.json()        
         return data
     }
 
-    async function displayData(photographers) {
+    async function displayData(photographers){
         const photographersSection = document.querySelector(".photographer_section");
         let template = ""
 

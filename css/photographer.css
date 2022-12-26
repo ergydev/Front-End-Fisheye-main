@@ -6,6 +6,10 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 50px;
 }
 
 .contact_button {
@@ -20,6 +24,71 @@
     border-radius: 5px;
     cursor: pointer;
 }
+.photographer-name{
+    color: #d3573c;
+    font-size: 40px;
+    margin: 20px 0 3px;
+}
+
+.photographer-adress{
+    color: #901C1C;
+    font-size: 24px;
+}
+
+.photographer-tagline{
+    color: #525252;
+    font-size: 18px;
+}
+
+.photographer-portrait{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+.photographer-gallery{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 100px 100px 0;
+}
+
+.photographer-gallery__card{
+    flex-basis: 40%;
+    margin-bottom: 20px;
+    width: 350px;
+    justify-self: center;
+}
+
+.photographer-gallery__media{
+    object-fit: cover;
+    width: 100%;
+    height: 350px;
+    border-radius: 5px;
+}
+
+.photographer-gallery__info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    color: #901C1C;
+    line-height: 5px;
+
+}
+
+.photographer-gallery__info-title{
+    font-weight: 400;
+    padding-top: 0;
+}
+
+.photographer-gallery__info-likes{
+    font-weight: 600;
+}
+
 
 .modal {
     border-radius: 5px;
