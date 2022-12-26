@@ -15,7 +15,7 @@
       </a>
     </header>
     
-    <main id="main">
+    <main id="main"  aria-hidden="false">
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()" title="Contact Me">Contactez-moi</button>
       </div>
@@ -29,9 +29,9 @@
             <h2>Contactez-moi</h2>
             <h2 class="modal--name"></h2>
           </div>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" id="closeModal" onclick="closeModal()" />
         </header>
-				<form action="" name="contact" id="form" method="post" >
+				<form action="" name="contact" id="form" method="post" role="dialog" aria-describedby="Contact" aria-hidden="true" >
 					<div>
 						<label for="fname">Prénom</label>
 						<input type="text"  name="fname" id="fname"/>

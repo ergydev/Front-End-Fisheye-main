@@ -1,5 +1,8 @@
+const modal = document.getElementById("contact_modal");
+const form = document.getElementById('form');
+const close = document.getElementById('closeModal');
+
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
     modal.setAttribute('aria-hidden', 'true')
     // document.body.style.overflow = "hidden"
@@ -8,15 +11,12 @@ function displayModal() {
 }
 
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
+    close.focus()
     // document.body.style.overflow = "auto"
     // document.body.style.height = "auto"
 }
 
-
-
-let form = document.getElementById('form')
 
 form.addEventListener('submit', function(event){
     event.preventDefault()
