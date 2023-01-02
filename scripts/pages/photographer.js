@@ -84,7 +84,7 @@ function showLightBox(medias, idx){
     if(video){
         template = `
         <video class="photographer-gallery__media" controls>
-            <source src="${videos}" type="video/mp4" closeup alt="${title}">
+            <source src="${videos}" type="video/mp4"  alt="${title}">
         </video>
         `
         infoTemplate = `
@@ -100,12 +100,19 @@ function showLightBox(medias, idx){
 
 function changeLightbox(medias, idx){
     document.querySelector('.lightbox__prev').addEventListener('click', function(){
-        console.log('prev')
-        showLightBox(medias, idx - 1)
+        if(idx === 0){
+            showLightBox(medias, medias.length - 1)
+        } else{
+
+            showLightBox(medias, idx - 1)
+        }
     })
     document.querySelector('.lightbox__next').addEventListener('click', function(){
-        console.log('next')
-        showLightBox(medias, idx + 1)
+        if(idx === medias.length - 1){
+            showLightBox(medias, idx = 0)
+        } else{
+            showLightBox(medias, idx + 1)
+        }
     })
 }
 
