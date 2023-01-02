@@ -68,6 +68,7 @@
     width: 100%;
     height: 350px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .photographer-gallery__info{
@@ -79,6 +80,10 @@
     line-height: 5px;
     flex-wrap: wrap;
 
+}
+
+.bntlikes{
+    cursor: pointer;
 }
 
 #contact_modal{
@@ -187,7 +192,15 @@ form textarea{
     height: 100%;
     width: 100%;
     z-index: 10;
+    background-color: rgba(0, 0, 0, .8);
+    display: none;
     /* overflow: auto; */
+}
+
+#lightbox.active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .lightbox__prev, .lightbox__next{
@@ -210,12 +223,12 @@ form textarea{
 .lightbox__close{
     border: 0;
     background: none;
-    font-size: 80px;
+    font-size: 60px;
     color: #901C1C;
     cursor: pointer;
     position: fixed;
-    top: 0;
-    right: 36%;
+    top: 16%;
+    right: 37%;
     z-index: 12;
 }
 .lightbox__container img{
@@ -231,4 +244,14 @@ form textarea{
     margin-left: 50px;
     margin-right: 50px;
     min-height: 100vh;
+}
+
+.lightbox__media--title{
+    color: #901C1C;
+    font-size: 24px;
+    position: fixed;
+    top: 80%;
+    z-index: 10;
+    right: 0;
+    left: 39.5%;
 }

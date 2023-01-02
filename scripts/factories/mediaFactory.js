@@ -5,34 +5,32 @@ function mediaFactory(data){
     const picture = `assets/photos/${image}`;
     const videos = `assets/photos/${video}`;
     
-    function getMediaCardDOM(){
+    function getMediaCardDOM(idx){
         if(image){
             return`
             <div class="photographer-gallery__card" aria-label="${title} thumbnail">
-                <a href="${picture}"><img class="photographer-gallery__media" src="${picture}" alt="${title}, closeup" /></a>
+                <img class="photographer-gallery__media" src="${picture}" alt="${title}, closeup" data-idx="${idx}" />
                 <div class="photographer-gallery__info">
                     <h3 class="photographer-gallery__info-title">${title}</h3>
-                    <span class="photographer-gallery__info-likes">
-                        ${likes}
-                        <i class="fa-solid fa-heart" aria-label="likes"></i>
-                    </span>
+                    <div class="photographer-gallery__like__section">
+                    <span class="photographer-gallery__counter-likes">${likes}</span>
+                    <i class="fa-solid fa-heart btnlikes"  aria-label="likes"></i>
+                    </div>
                 </div>
             </div>
             `
     } else if (videos){
         return`
         <div class="photographer-gallery__card" aria-label="${title} thumbnail">
-            <a href="${videos}">
-            <video class="photographer-gallery__media">
-                <source src="${videos}" type="video/mp4" alt="${title}, closeup">
+            <video class="photographer-gallery__media" controls>
+                <source src="${videos}" type="video/mp4" alt="${title}, closeup" data-idx="${idx}">
             </video>
-            </a>
             <div class="photographer-gallery__info">
                 <h3 class="photographer-gallery__info-title">${title}</h3>
-                <span class="photographer-gallery__info-likes">
-                    ${likes}
-                    <i class="fa-solid fa-heart" aria-label="likes"></i>
-                </span>
+                <div class="photographer-gallery__like__section">
+                <span class="photographer-gallery__counter-likes">${likes}</span>
+                <i class="fa-solid fa-heart btnlikes" aria-label="likes"></i>
+                </div>
             </div>
         </div>
         `
