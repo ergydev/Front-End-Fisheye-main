@@ -24,6 +24,12 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+.contact_button:hover{
+    background-color: #DB8876;
+    color: #000;
+}
+
 .photographer-name{
     color: #d3573c;
     font-size: 40px;
@@ -82,15 +88,16 @@
 
 }
 
-.bntlikes{
+.btnlikes{
     cursor: pointer;
 }
 
 #contact_modal{
-    position: absolute;
+    position: fixed;
     z-index: 9999;
-    top: 100%;
+    top: 50%;
     left: 50%;
+    height: 90%;
     transform: translate(-50%, -50%);
 }
 
@@ -110,12 +117,12 @@
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 60%;
+    width: 55%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
+    padding: 5px 35px 30px;
     margin: auto;
 }
 
@@ -166,8 +173,8 @@ form input {
 }
 
 form label {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 1px;
+    margin-bottom: 2px;
 }
 
 form textarea{
@@ -194,30 +201,29 @@ form textarea{
     z-index: 10;
     background-color: rgba(0, 0, 0, .8);
     display: none;
-    /* overflow: auto; */
 }
 
 #lightbox.active{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .lightbox__prev, .lightbox__next{
     color: #901C1C;
     font-size: 50px;
-    /* width: 40px; */
     z-index: 11;
-    position: fixed;
+    position: absolute;
     top: 50%;
-    right: 37%;
+    right: 33%;
     margin-top: -14px;
     cursor: pointer;
 }
 
 .lightbox__prev{
     right: auto;
-    left: 37%;
+    left: 33%;
 }
 
 .lightbox__close{
@@ -227,14 +233,13 @@ form textarea{
     color: #901C1C;
     cursor: pointer;
     position: fixed;
-    top: 16%;
-    right: 37%;
+    top: 45px;
+    right: 33%;
     z-index: 12;
 }
 .lightbox__container img{
     max-width: 100%;
-    /* height: 750px; */
-    max-height: 600px;
+    max-height: 80vh;
 }
 
 .lightbox__container{
@@ -243,15 +248,78 @@ form textarea{
     justify-content: center;
     margin-left: 50px;
     margin-right: 50px;
-    min-height: 100vh;
+    max-width: 30%;
 }
 
 .lightbox__media--title{
     color: #901C1C;
     font-size: 24px;
-    position: fixed;
-    top: 80%;
+    bottom: 10px;
     z-index: 10;
     right: 0;
     left: 39.5%;
+    margin-top: 5px;
 }
+
+/* filter  */
+
+.photographer-filter{
+    margin: 20px 100px ;
+    position: relative;
+}
+
+.photographer-filter__label{
+    color: #000;
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 25px;
+}
+
+.photographer-filter select{
+    background-color: #901C1C;
+    color: #fff;
+    border-radius: 5px;
+    padding: 16px 20px 16px 20px;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+
+    width: 160px;
+}
+
+.photographer-filter select:focus-visible{
+    border: none;
+    outline: none;
+}
+
+.photographer-filter::after{
+    content: "\25BC";
+    padding: 0 1em;
+    position: absolute;
+    top: 25%;
+    left: 2px;
+    top: 30%;
+    left: 210px;
+    color: #fff;
+    cursor: pointer;
+}
+
+select option{
+    font-size: 18px;
+    font-weight: 700;
+    padding: 23px 26px 23px 20px;
+    cursor: pointer;
+    border-bottom: #fff solid 2px;
+}
+
+option:hover{
+    cursor: pointer;
+}
+
+
+

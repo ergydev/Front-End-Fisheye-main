@@ -22,8 +22,8 @@ function mediaFactory(data){
     } else if (videos){
         return`
         <div class="photographer-gallery__card" aria-label="${title} thumbnail">
-            <video class="photographer-gallery__media" controls>
-                <source src="${videos}" type="video/mp4" alt="${title}, closeup" data-idx="${idx}">
+            <video class="photographer-gallery__media" data-idx="${idx}">
+                <source src="${videos}" type="video/mp4" alt="${title}, closeup">
             </video>
             <div class="photographer-gallery__info">
                 <h3 class="photographer-gallery__info-title">${title}</h3>

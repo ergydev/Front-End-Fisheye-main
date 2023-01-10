@@ -50,14 +50,24 @@ function displayMedias(medias){
 
 function handleLikes(){
     const likeButtons = document.querySelectorAll('.btnlikes')
+    let clicked = false
     
     likeButtons.forEach(btn => btn.addEventListener('click', (event) => {
         const parent = event.target.parentNode
         const likeCounter = parent.querySelector('.photographer-gallery__counter-likes')
         const likeNumber = likeCounter.textContent
 
-        likeCounter.textContent = Number(likeNumber) +1 
+        if(!clicked){
+            clicked = true 
+            likeCounter.textContent = Number(likeNumber) +1 
+        }
+        else{
+            clicked = false
+            likeCounter.textContent = Number(likeNumber) -1
+        }
+        return likeNumber
     }))
+    
 }
 
 // lightbox functions 
@@ -68,7 +78,7 @@ function showLightBox(medias, idx){
     const mediaInfo = document.querySelector('.lightbox__media--title')
     let template = ""
     let infoTemplate = ""
-    const { title, image, video } = media
+    const { title, image, video } = media || {}
     const picture = `assets/photos/${image}`;
     const videos = `assets/photos/${video}`;
 
@@ -80,11 +90,10 @@ function showLightBox(medias, idx){
         infoTemplate = `
             ${title}
         `
-    }
-    if(video){
+    } else if (video){
         template = `
-        <video class="photographer-gallery__media" controls>
-            <source src="${videos}" type="video/mp4"  alt="${title}">
+        <video class="photographer-gallery__media" controls autoplay muted >
+            <source src="${videos}" type="video/mp4"  alt="${title}" >
         </video>
         `
         infoTemplate = `
@@ -93,9 +102,11 @@ function showLightBox(medias, idx){
     }
 
     lightBoxContainer.innerHTML = template
+    lightBoxContainer.setAttribute("aria-label", "image closeup view" )
     mediaInfo.innerHTML = infoTemplate
     lightbox.classList.add('active')
     changeLightbox(medias, Number(idx))
+    console.log(`${title}`)
 }
 
 function changeLightbox(medias, idx){
@@ -135,16 +146,51 @@ function closeLightbox(){
     close.focus()
 }
 
+// sort media filter
+
+function sortMedia(medias){
+    const select = document.getElementById('filter')
+
+    select.addEventListener('change', (e) =>{
+
+        const choice = e.target.value
+
+        if(choice == "Popularite")
+            medias.sort((a, b) => b.likes - a.likes)
+
+        if(choice == "Titre"){
+            let sortMethod =  function(a, b){
+                if(a.title > b.title){
+                    return 1
+                }
+                else if(b.title > a.title){
+                    return -1
+                } else{
+                    return 0
+                }
+            }
+            medias.sort(sortMethod)
+        } 
+        if(choice == "Date")
+             medias.sort((a,b) =>new Date(b.date).valueOf() - new Date(a.date).valueOf())
+             
+    
+    displayMedias(medias)
+    }) 
+}
+
 async function main(){
     const id = getPhotographerID()
     const {photographers, media} = await getAllData()
     const photographeprofile = getPhotographerProfile(photographers, id)
     const photographerMedias = getPhotographerMedias(media, id)
+    
 
     displayProfile(photographeprofile)
     displayMedias(photographerMedias)
     handleMediasClick(photographerMedias)
     handleLikes()
+    sortMedia(photographerMedias)
 
 } 
 main();
