@@ -70,6 +70,29 @@ function handleLikes(){
     
 }
 
+function displayOverlay(profile, medias){
+    const overlay = document.getElementById("overlay__wrapper")
+    let likeCounter = document.querySelectorAll('.photographer-gallery__counter-likes')
+    let likeSum = 0
+
+    likeCounter.forEach(function (like){
+        let likeUnit = Number(like.textContent)
+        likeSum += likeUnit
+    })
+    likeCounter = likeSum
+
+    template = `
+    <div class="overlay__wrapper--like">
+        <span class="overlay__wrapper--like__total">${likeSum}</span>
+        <i class="fa-solid fa-heart"  aria-label="likes"></i>
+    </div>
+    <div class="overlay__wrapper--pricing">
+        <span class="overlay__wrapper--pricing__amount">${profile.price}€ /jour</span>
+    </div>
+    `
+    overlay.innerHTML = template
+}
+
 // lightbox functions 
 function showLightBox(medias, idx){
     const media = medias[idx]
@@ -106,7 +129,6 @@ function showLightBox(medias, idx){
     mediaInfo.innerHTML = infoTemplate
     lightbox.classList.add('active')
     changeLightbox(medias, Number(idx))
-    console.log(`${title}`)
 }
 
 function changeLightbox(medias, idx){
@@ -184,6 +206,7 @@ async function main(){
     const {photographers, media} = await getAllData()
     const photographeprofile = getPhotographerProfile(photographers, id)
     const photographerMedias = getPhotographerMedias(media, id)
+    const numberLikes = handleLikes()
     
 
     displayProfile(photographeprofile)
@@ -191,6 +214,7 @@ async function main(){
     handleMediasClick(photographerMedias)
     handleLikes()
     sortMedia(photographerMedias)
+    displayOverlay(photographeprofile, photographerMedias)
 
 } 
 main();

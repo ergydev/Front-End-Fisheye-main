@@ -321,5 +321,29 @@ option:hover{
     cursor: pointer;
 }
 
+/* overlay price & likes  */
+
+#overlay__wrapper{
+    display: flex;
+    width: 240px;
+    height: 70px;
+    background: #DB8876;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 5px;
+    position: fixed;
+    padding: 0 2rem;
+    right: 2rem;
+    bottom: 0;
+    z-index: 15;
+}
+
+.overlay__wrapper--like span, .overlay__wrapper--like i, .overlay__wrapper--pricing span {
+    font-size: 24px;
+}
+
+#overlay__wrapper span{
+    font-weight: 600;
+}
 
 
