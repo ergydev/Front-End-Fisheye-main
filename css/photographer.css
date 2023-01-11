@@ -325,14 +325,14 @@ option:hover{
 
 #overlay__wrapper{
     display: flex;
-    width: 240px;
+    width: 298px;
     height: 70px;
     background: #DB8876;
     align-items: center;
     justify-content: space-around;
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0;
     position: fixed;
-    padding: 0 2rem;
+    padding: 0 1rem;
     right: 2rem;
     bottom: 0;
     z-index: 15;

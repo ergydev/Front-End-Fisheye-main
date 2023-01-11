@@ -70,11 +70,11 @@ function handleLikes(){
     
 }
 
-function displayOverlay(profile, medias){
+function displayOverlay(profile){
     const overlay = document.getElementById("overlay__wrapper")
     let likeCounter = document.querySelectorAll('.photographer-gallery__counter-likes')
     let likeSum = 0
-
+    
     likeCounter.forEach(function (like){
         let likeUnit = Number(like.textContent)
         likeSum += likeUnit
@@ -91,6 +91,7 @@ function displayOverlay(profile, medias){
     </div>
     `
     overlay.innerHTML = template
+    return likeSum
 }
 
 // lightbox functions 
@@ -206,15 +207,14 @@ async function main(){
     const {photographers, media} = await getAllData()
     const photographeprofile = getPhotographerProfile(photographers, id)
     const photographerMedias = getPhotographerMedias(media, id)
-    const numberLikes = handleLikes()
+    const totalLikesNumber = displayOverlay(photographeprofile)
     
-
     displayProfile(photographeprofile)
     displayMedias(photographerMedias)
     handleMediasClick(photographerMedias)
-    handleLikes()
+    handleLikes(totalLikesNumber, photographeprofile)
     sortMedia(photographerMedias)
-    displayOverlay(photographeprofile, photographerMedias)
+    displayOverlay(photographeprofile)
 
 } 
 main();
