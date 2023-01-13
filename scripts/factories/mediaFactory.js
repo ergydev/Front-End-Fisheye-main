@@ -14,7 +14,7 @@ function mediaFactory(data){
                     <h3 class="photographer-gallery__info-title">${title}</h3>
                     <div class="photographer-gallery__like__section">
                     <span class="photographer-gallery__counter-likes">${likes}</span>
-                    <i class="fa-solid fa-heart btnlikes"  aria-label="likes"></i>
+                    <i class="fa-solid fa-heart btnlikes"></i>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@ function mediaFactory(data){
                 <h3 class="photographer-gallery__info-title">${title}</h3>
                 <div class="photographer-gallery__like__section">
                 <span class="photographer-gallery__counter-likes">${likes}</span>
-                <i class="fa-solid fa-heart btnlikes" aria-label="likes"></i>
+                <i class="fa-solid fa-heart btnlikes"></i>
                 </div>
             </div>
         </div>

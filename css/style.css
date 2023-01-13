@@ -86,3 +86,10 @@ a:visited{
     font-size: 13px;
     color: #757575;
 }
+
+@media screen and (max-width: 1024px){
+    .photographer_section{
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}

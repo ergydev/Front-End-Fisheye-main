@@ -288,25 +288,17 @@ form textarea{
     -moz-appearance: none;
     -ms-appearance: none;
     appearance: none;
-
+    background-image: url("/assets/icons/down-arrow.png");
+    background-repeat: no-repeat;
+    background-position-x: 90%;
+    background-position-y: 16px;
+    background-size: 20px;
     width: 160px;
 }
 
 .photographer-filter select:focus-visible{
     border: none;
     outline: none;
-}
-
-.photographer-filter::after{
-    content: "\25BC";
-    padding: 0 1em;
-    position: absolute;
-    top: 25%;
-    left: 2px;
-    top: 30%;
-    left: 210px;
-    color: #fff;
-    cursor: pointer;
 }
 
 select option{
@@ -347,3 +339,22 @@ option:hover{
 }
 
 
+@media screen and (max-width: 1024px) {
+    .photographer-name{
+        font-size: 30px;
+    }
+
+    .photograph-header{
+        padding-inline: 10px;
+        justify-content: space-evenly;
+    }
+
+    .photographer-portrait{
+        height: 160px;
+        width: 160px;
+    }
+    
+    .photographer-gallery{
+        grid-template-columns: 1fr 1fr;
+    }
+}

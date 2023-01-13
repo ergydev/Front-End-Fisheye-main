@@ -84,7 +84,7 @@ function displayOverlay(profile){
     template = `
     <div class="overlay__wrapper--like">
         <span class="overlay__wrapper--like__total">${likeSum}</span>
-        <i class="fa-solid fa-heart"  aria-label="likes"></i>
+        <i class="fa-solid fa-heart"></i>
     </div>
     <div class="overlay__wrapper--pricing">
         <span class="overlay__wrapper--pricing__amount">${profile.price}€ /jour</span>
@@ -137,7 +137,6 @@ function changeLightbox(medias, idx){
         if(idx === 0){
             showLightBox(medias, medias.length - 1)
         } else{
-
             showLightBox(medias, idx - 1)
         }
     })
@@ -146,6 +145,22 @@ function changeLightbox(medias, idx){
             showLightBox(medias, idx = 0)
         } else{
             showLightBox(medias, idx + 1)
+        }
+    })
+
+    document.addEventListener('keyup', function(e){
+        if(e.key == 'Escape'){
+            closeLightbox()
+        }
+        if(e.key == 'ArrowRight'){
+            showLightBox(medias, idx + 1)
+        } else{
+            showLightBox(medias, idx + 1)
+        }
+        if(e.key == 'ArrowLeft'){
+            showLightBox(medias, idx - 1)
+        } else{
+            // showLightBox(medias, idx = 0)
         }
     })
 }
