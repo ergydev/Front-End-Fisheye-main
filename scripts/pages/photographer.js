@@ -48,50 +48,53 @@ function displayMedias(medias){
     gallerySection.innerHTML = template
 }
 
-function handleLikes(){
+function handleLikes() {
     const likeButtons = document.querySelectorAll('.btnlikes')
-    let clicked = false
+    const totalLikes = document.querySelector('.overlay__wrapper--like__total')
+   
     
     likeButtons.forEach(btn => btn.addEventListener('click', (event) => {
+        
+        let liked = event.target.dataset.liked 
         const parent = event.target.parentNode
         const likeCounter = parent.querySelector('.photographer-gallery__counter-likes')
         const likeNumber = likeCounter.textContent
 
-        if(!clicked){
-            clicked = true 
+        if(liked == 'no') {
+
+            event.target.dataset.liked = 'yes'
+
+            const totalLikesCount = totalLikes.textContent
+
+            totalLikes.textContent = Number(totalLikesCount) + 1
+
             likeCounter.textContent = Number(likeNumber) +1 
         }
-        else{
-            clicked = false
+        else {
+
+            event.target.dataset.liked = 'no'
+
+            const totalLikesCount = totalLikes.textContent
+
             likeCounter.textContent = Number(likeNumber) -1
+
+            totalLikes.textContent = Number(totalLikesCount) - 1
+            
         }
-        return likeNumber
+    
     }))
     
 }
 
-function displayOverlay(profile){
-    const overlay = document.getElementById("overlay__wrapper")
-    let likeCounter = document.querySelectorAll('.photographer-gallery__counter-likes')
-    let likeSum = 0
-    
-    likeCounter.forEach(function (like){
-        let likeUnit = Number(like.textContent)
-        likeSum += likeUnit
-    })
-    likeCounter = likeSum
+function displayOverlay(dailyPrice, mediaList) {
 
-    template = `
-    <div class="overlay__wrapper--like">
-        <span class="overlay__wrapper--like__total">${likeSum}</span>
-        <i class="fa-solid fa-heart"></i>
-    </div>
-    <div class="overlay__wrapper--pricing">
-        <span class="overlay__wrapper--pricing__amount">${profile.price}€ /jour</span>
-    </div>
-    `
-    overlay.innerHTML = template
-    return likeSum
+    const totalLikes = document.querySelector('.overlay__wrapper--like__total')
+    const dailyPriceDOM = document.querySelector('.overlay__wrapper--pricing__amount')
+
+    const likeSum = mediaList.reduce((accumulator, currentValue) =>  accumulator + currentValue.likes, 0);
+    
+    totalLikes.textContent = likeSum
+    dailyPriceDOM.textContent = dailyPrice + '€ / jour'
 }
 
 // lightbox functions 
@@ -159,9 +162,7 @@ function changeLightbox(medias, idx){
         }
         if(e.key == 'ArrowLeft'){
             showLightBox(medias, idx - 1)
-        } else{
-            // showLightBox(medias, idx = 0)
-        }
+        } 
     })
 }
 
@@ -222,14 +223,13 @@ async function main(){
     const {photographers, media} = await getAllData()
     const photographeprofile = getPhotographerProfile(photographers, id)
     const photographerMedias = getPhotographerMedias(media, id)
-    const totalLikesNumber = displayOverlay(photographeprofile)
     
     displayProfile(photographeprofile)
     displayMedias(photographerMedias)
     handleMediasClick(photographerMedias)
-    handleLikes(totalLikesNumber, photographeprofile)
+    handleLikes()
     sortMedia(photographerMedias)
-    displayOverlay(photographeprofile)
+    displayOverlay(photographeprofile.price, photographerMedias)
 
 } 
 main();
