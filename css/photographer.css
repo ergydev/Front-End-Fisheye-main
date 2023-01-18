@@ -318,10 +318,9 @@ form textarea{
             justify-content: center;
     margin-left: 50px;
     margin-right: 50px;
-    /* max-width: 30%; */
     width: 530px;
     height: 80vh;
-    /* background-color: #fff; */
+    background-color: #fff;
 }
 
 .lightbox__media--title{
@@ -437,5 +436,10 @@ option:hover{
     .photographer-gallery{
         -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
+    }
+
+    #overlay__wrapper{
+        width: 215px;
+        height: 55px;
     }
 }
