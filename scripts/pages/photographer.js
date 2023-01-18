@@ -111,7 +111,7 @@ function showLightBox(medias, idx){
 
     if(image){
         template = `
-            <img src="${picture}" alt="${title}" />
+            <img src="${picture}" alt="${title}" class="photographer-gallery__img" />
          `
 
         infoTemplate = `
@@ -151,19 +151,18 @@ function changeLightbox(medias, idx){
         }
     })
 
-    document.addEventListener('keyup', function(e){
-        if(e.key == 'Escape'){
-            closeLightbox()
+    document.onkeydown =  function(e){
+        switch (e.keyCode){
+            case 39: 
+                showLightBox(medias, idx + 1)
+                break;
+            case 37:
+                showLightBox(medias, idx - 1)
+                break;
+            case 27:
+                closeLightbox()
         }
-        if(e.key == 'ArrowRight'){
-            showLightBox(medias, idx + 1)
-        } else{
-            showLightBox(medias, idx + 1)
-        }
-        if(e.key == 'ArrowLeft'){
-            showLightBox(medias, idx - 1)
-        } 
-    })
+    }
 }
 
 function handleMediasClick(mediaList){

@@ -276,11 +276,11 @@ form textarea{
 
 .lightbox__prev, .lightbox__next{
     color: #901C1C;
-    font-size: 50px;
+    font-size: 40px;
     z-index: 11;
     position: absolute;
-    top: 50%;
-    right: 33%;
+    top: 45%;
+    right: 33.5%;
     margin-top: -14px;
     cursor: pointer;
 }
@@ -297,19 +297,19 @@ form textarea{
     color: #901C1C;
     cursor: pointer;
     position: fixed;
-    top: 45px;
+    top: 40px;
     right: 33%;
     z-index: 12;
 }
 .lightbox__container img{
-    max-width: 100%;
+    max-width: 500px;
     max-height: 80vh;
 }
 
 .lightbox__container{
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
+    /* display: flex; */
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -318,7 +318,10 @@ form textarea{
             justify-content: center;
     margin-left: 50px;
     margin-right: 50px;
-    max-width: 30%;
+    /* max-width: 30%; */
+    width: 530px;
+    height: 80vh;
+    /* background-color: #fff; */
 }
 
 .lightbox__media--title{
