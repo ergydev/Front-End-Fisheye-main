@@ -214,6 +214,7 @@ function sortMedia(medias){
              
     
     displayMedias(medias)
+    handleMediasClick(medias)
     }) 
 }
 
