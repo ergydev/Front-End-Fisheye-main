@@ -20,4 +20,5 @@ form.addEventListener('submit', function(event){
     let email = document.getElementById("email").value;
 
     console.log("Prénom: " + fname, "Nom: " + lname, "email: " + email)
+    closeModal()
 })

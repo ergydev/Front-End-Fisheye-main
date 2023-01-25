@@ -34,6 +34,11 @@
 .contact_button:hover{
     background-color: #DB8876;
     color: #000;
+    transition: all 2ms ease-in-out;
+}
+
+#submit:hover {
+    background-color: #901C1C;
 }
 
 .photographer-name{
