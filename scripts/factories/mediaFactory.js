@@ -8,7 +8,7 @@ function mediaFactory(data){
     function getMediaCardDOM(idx){
         if(image){
             return`
-            <div class="photographer-gallery__card" aria-label="${title} thumbnail">
+            <div class="photographer-gallery__card" aria-label="${title}" tabindex="${idx}" thumbnail">
                 <img class="photographer-gallery__media" src="${picture}" alt="${title}, closeup" data-idx="${idx}" />
                 <div class="photographer-gallery__info">
                     <h3 class="photographer-gallery__info-title">${title}</h3>
@@ -21,7 +21,7 @@ function mediaFactory(data){
             `
     } else if (videos){
         return`
-        <div class="photographer-gallery__card" aria-label="${title} thumbnail">
+        <div class="photographer-gallery__card" aria-label="${title}" tabindex="${idx}" thumbnail">
             <video class="photographer-gallery__media" data-idx="${idx}">
                 <source src="${videos}" type="video/mp4" alt="${title}, closeup">
             </video>
