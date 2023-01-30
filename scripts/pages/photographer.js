@@ -55,38 +55,49 @@ function handleLikes() {
     const likeButtons = document.querySelectorAll('.btnlikes')
     const totalLikes = document.querySelector('.overlay__wrapper--like__total')
 
+    likeButtons.forEach(btn => btn.addEventListener('click', (event) => updateLikesCount(event.target, totalLikes)))
 
-    likeButtons.forEach(btn => btn.addEventListener('click', (event) => {
+    document.addEventListener('keydown', function (event) {
 
-        let liked = event.target.dataset.liked
-        const parent = event.target.parentNode
-        const likeCounter = parent.querySelector('.photographer-gallery__counter-likes')
-        const likeNumber = likeCounter.textContent
+        if (event.key == "Enter") {
 
-        if (liked == 'no') {
-
-            event.target.dataset.liked = 'yes'
-
-            const totalLikesCount = totalLikes.textContent
-
-            totalLikes.textContent = Number(totalLikesCount) + 1
-
-            likeCounter.textContent = Number(likeNumber) + 1
+            const currentEl = event.target
+            const type = currentEl.nodeName
+            if (type === "I") {
+                updateLikesCount(currentEl, totalLikes)
+            }
         }
-        else {
+    })
+}
 
-            event.target.dataset.liked = 'no'
 
-            const totalLikesCount = totalLikes.textContent
+function updateLikesCount(elemRef, totalLikes) {
+    let liked = elemRef.dataset.liked
+    const parent = elemRef.parentNode
+    const likeCounter = parent.querySelector('.photographer-gallery__counter-likes')
+    const likeNumber = likeCounter.textContent
 
-            likeCounter.textContent = Number(likeNumber) - 1
+    if (liked == 'no') {
 
-            totalLikes.textContent = Number(totalLikesCount) - 1
+        elemRef.dataset.liked = 'yes'
 
-        }
+        const totalLikesCount = totalLikes.textContent
 
-    }))
+        totalLikes.textContent = Number(totalLikesCount) + 1
 
+        likeCounter.textContent = Number(likeNumber) + 1
+    }
+    else {
+
+        elemRef.dataset.liked = 'no'
+
+        const totalLikesCount = totalLikes.textContent
+
+        likeCounter.textContent = Number(likeNumber) - 1
+
+        totalLikes.textContent = Number(totalLikesCount) - 1
+
+    }
 }
 
 function displayOverlay(dailyPrice, mediaList) {
@@ -143,8 +154,8 @@ function changeLightbox(medias) {
         if (currentMediaIdx === 0)
             currentMediaIdx = medias.length - 1
         else
-            currentMediaIdx =  currentMediaIdx - 1
-        
+            currentMediaIdx = currentMediaIdx - 1
+
         showLightBox(medias, currentMediaIdx)
     })
 
@@ -179,11 +190,23 @@ function handleMediasClick(mediaList) {
 
     allMediasCards.forEach(media => media.addEventListener('click', function (event) {
         const media = event.target
-
-        // get data atribute with dataset 
         currentMediaIdx = media.dataset.idx
         showLightBox(mediaList, currentMediaIdx)
     }))
+
+    document.addEventListener('keydown', function (event) {
+
+        if (event.key == "Enter") {
+
+            const currentEl = event.target
+            const type = currentEl.nodeName
+            if (type === "IMG" || type === "VIDEO") {
+                currentMediaIdx = currentEl.dataset.idx
+                showLightBox(mediaList, currentMediaIdx)
+            }
+            console.log(currentEl.nodeName)
+        }
+    })
 }
 
 function closeLightbox() {
@@ -224,6 +247,7 @@ function sortMedia(medias) {
 
         displayMedias(medias)
         handleMediasClick(medias)
+        handleLikes()
     })
 }
 

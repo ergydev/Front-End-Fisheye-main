@@ -18,7 +18,9 @@ form.addEventListener('submit', function(event){
     let fname = document.getElementById("fname").value;
     let lname = document.getElementById("lname").value;
     let email = document.getElementById("email").value;
+    let message = document.getElementById('message').value
 
-    console.log("Prénom: " + fname, "Nom: " + lname, "email: " + email)
+    console.log("Prénom: " + fname, "Nom: " + lname, "email: " + email, "Message: " + message)
+    form.reset()
     closeModal()
 })

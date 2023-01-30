@@ -129,6 +129,7 @@
     -webkit-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
+    overflow-y: auto;
 }
 
 .photographer-gallery__info-title{
@@ -259,7 +260,7 @@ form textarea{
     height: 100%;
     width: 100%;
     z-index: 10;
-    background-color: rgba(0, 0, 0, .8);
+    background-color: #fff;
     display: none;
 }
 
